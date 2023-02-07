@@ -5,8 +5,6 @@ from django.db import models
 
 class Raspberry(models.Model):
 
-    admin_code = models.IntegerField(
-    )
+    admin_code = models.IntegerField()
 
-    user_code = models.IntegerField(
-    )
+    user_code = models.IntegerField()
