@@ -4,7 +4,4 @@ from security_system.models import BaseRecord
 
 
 class SmokeRecord(BaseRecord):
-    methan = models.FloatField()
-    hydrogen = models.FloatField()
-    lpg = models.FloatField()
-    smoke = models.FloatField()
+    time = models.DateTimeField(auto_now_add=True)

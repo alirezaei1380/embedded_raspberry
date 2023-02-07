@@ -1,28 +1,18 @@
-from time import sleep
-
-from mq2 import MQ2
+import RPi.GPIO as GPIO
+import time
 
 from security_system.handlers.security_handler import send_gas
 from security_system.models import SmokeRecord
 
+GPIO.setmode(GPIO.BCM)
 GAS_PORT = 5
-
-sensor = MQ2(pinData=GAS_PORT, baseVoltage=3.3)
-sensor.calibrate()
-
-SMOKE_LIMIT = 10
-LPG_LIMIT = 10
-METHAN_LIMIT = 10
-HYDROGEN_LIMIT = 10
+GPIO.setup(GAS_PORT, GPIO.IN)
 
 
-def run_gas():
+def read_gas():
     while True:
-        smoke = sensor.readSmoke()
-        lpg = sensor.readLPG()
-        methan = sensor.readMethan()
-        hydrogen = sensor.readHydrogen()
-        if methan > METHAN_LIMIT or lpg > LPG_LIMIT or smoke > SMOKE_LIMIT or hydrogen > HYDROGEN_LIMIT:
-            smoke_record = SmokeRecord.objects.create(methan=methan, lpg=lpg, smoke=smoke, hydrogen=hydrogen)
-            send_gas(smoke_record)
-        sleep(60)
+        gas_sensor_state = GPIO.input(GAS_PORT)
+        if gas_sensor_state != 0:
+            SmokeRecord.objects.create()
+            send_gas()
+        time.sleep(0.5)
