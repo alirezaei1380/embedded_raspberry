@@ -9,7 +9,7 @@ GAS_PORT = 5
 GPIO.setup(GAS_PORT, GPIO.IN)
 
 
-def read_gas():
+def run_gas():
     while True:
         gas_sensor_state = GPIO.input(GAS_PORT)
         if gas_sensor_state != 0:
