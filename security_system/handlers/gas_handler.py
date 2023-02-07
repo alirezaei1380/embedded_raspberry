@@ -5,7 +5,7 @@ from security_system.handlers.security_handler import send_gas
 from security_system.models import SmokeRecord
 
 GPIO.setmode(GPIO.BCM)
-GAS_PORT = 5
+GAS_PORT = 21
 GPIO.setup(GAS_PORT, GPIO.IN)
 
 
