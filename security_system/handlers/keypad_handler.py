@@ -73,7 +73,7 @@ def readLine(line, characters):
         char = characters[0]
     if GPIO.input(C2) == 1:
         char = characters[1]
-    if GPIO.input(C3) == 1 :
+    if GPIO.input(C3) == 1:
         char = characters[2]
     if GPIO.input(C4) == 1:
         char = characters[3]
@@ -164,15 +164,15 @@ def process_char(char):
         input = ''
         return
     key_press_time = now_time
-    if char == '*':
+    if char == 'C':
         input = ''
-    elif char == '#':
+    elif char == 'D':
         check_input()
     elif char == 'A':
         turn_on()
     elif char == 'B':
         turn_off()
-    elif char not in ['C', 'D']:
+    elif char not in ['*', '#']:
         input += char
 
 
