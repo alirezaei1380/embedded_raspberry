@@ -1,7 +1,7 @@
 from gpiozero import MotionSensor
 from datetime import datetime
 
-from security_system.handlers import send_motion
+from security_system.handlers.security_handler import send_motion
 from security_system.handlers.buzzer_handler import beep
 # from security_system.handlers.camera_handler import take_image
 from security_system.handlers.keypad_handler import get_security_mode
