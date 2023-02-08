@@ -9,3 +9,7 @@ def send_image(thief_record):
 
 def send_gas():
     requests.post(SECURITY_URL + 'smoke-records/', data={'raspberry': SECURITY_ID})
+
+
+def send_motion():
+    requests.post(SECURITY_URL + 'motion-records/', data={'raspberry': SECURITY_ID})

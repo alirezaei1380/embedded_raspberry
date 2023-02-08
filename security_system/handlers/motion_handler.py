@@ -1,11 +1,14 @@
 from gpiozero import MotionSensor
 from datetime import datetime
 
+from security_system.handlers import send_motion
 from security_system.handlers.buzzer_handler import beep
-#from security_system.handlers.camera_handler import take_image
+# from security_system.handlers.camera_handler import take_image
 from security_system.handlers.keypad_handler import get_security_mode
-#from security_system.handlers.security_handler import send_image
-#from security_system.models import ThiefRecord
+from security_system.models import MotionRecord
+
+# from security_system.handlers.security_handler import send_image
+# from security_system.models import ThiefRecord
 
 MOTION_PORT = 4
 
@@ -19,8 +22,10 @@ def run_motion():
             continue
         beep()
         print('motion')
-        #image = take_image()
+        # image = take_image()
         beep()
-        #record = ThiefRecord.objects.create(image=image)
-        #send_image(record)
+        MotionRecord.objects.create()
+        send_motion()
+        # record = ThiefRecord.objects.create(image=image)
+        # send_image(record)
         pir.wait_for_no_motion()
