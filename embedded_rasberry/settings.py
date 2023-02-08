@@ -125,5 +125,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-SECURITY_URL = 'http://127.0.0.1:8001/security_system/'
+SECURITY_URL = 'http://172.27.55.239:8001/security_system/'
 SECURITY_ID = 6
