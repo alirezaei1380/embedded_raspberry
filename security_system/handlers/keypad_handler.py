@@ -31,6 +31,7 @@ user_login = False
 admin_login = False
 
 security_mode = True
+turn_led_on()
 lock_mode = False
 password_retry = 0
 
