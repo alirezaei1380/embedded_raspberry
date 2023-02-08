@@ -30,7 +30,7 @@ password_time = 0
 user_login = False
 admin_login = False
 
-security_mode = True
+security_mode = False
 turn_led_on()
 turn_lock_led_off()
 lock_mode = False
@@ -202,6 +202,9 @@ def get_security_mode():
 
 def run_keypad():
     global keypadPressed
+    security_mode = True
+    turn_led_on()
+    turn_lock_led_off()
     while True:
         if keypadPressed != -1:
             setAllLines(GPIO.HIGH)
