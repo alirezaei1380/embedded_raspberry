@@ -118,17 +118,21 @@ def check_input():
         password_retry = 0
         admin_login = True
         lock_mode = False
+        print('admin login')
         turn_lock_led_off()
     elif input == user_code:
+        print('user login')
         password_time = datetime.now().timestamp()
         password_retry = 0
         user_login = True
     else:
+        print('wring pass')
         password_retry += 1
         if password_retry == 3:
             password_retry = 0
             lock_mode = True
             turn_lock_led_on()
+            print('lock on')
             beep(3)
 
 
@@ -136,10 +140,12 @@ def turn_on():
     global user_login, admin_login, security_mode, password_time, lock_mode, input
     now_time = datetime.now().timestamp()
     if ((lock_mode and admin_login) or (not lock_mode and admin_login) or (not lock_mode and user_login)) and now_time - password_time < 10:
+        print('turn on')
         security_mode = True
         turn_led_on()
         beep(1)
     else:
+        print('turn not on')
         input = ''
         beep(2)
 
@@ -148,10 +154,12 @@ def turn_off():
     global user_login, admin_login, security_mode, password_time, input, lock_mode
     now_time = datetime.now().timestamp()
     if ((lock_mode and admin_login) or (not lock_mode and admin_login) or (not lock_mode and user_login)) and now_time - password_time < 10:
+        print('turn off')
         security_mode = False
         turn_led_off()
         beep(1)
     else:
+        print('turn not off')
         beep(2)
         input = ''
 
@@ -163,20 +171,26 @@ def process_char(char):
     now_time = datetime.now().timestamp()
     if now_time - key_press_time > 60:
         key_press_time = now_time
+        print('empty for too long')
         input = ''
         return
     key_press_time = now_time
     if char == 'C':
+        print('empty for c')
         input = ''
     elif char == 'D':
+        print('check for d')
         check_input()
         input = ''
     elif char == 'A':
+        print('turn on')
         turn_on()
     elif char == 'B':
+        print('off')
         turn_off()
     elif char not in ['*', '#']:
         input += char
+    print(f'{input= }')
 
 
 def get_security_mode():
