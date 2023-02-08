@@ -91,8 +91,8 @@ def set_passwords():
     if now_time - code_check_time > 60:
         code_check_time = now_time
         raspberry = Raspberry.objects.last()
-        admin_code = raspberry.admin_code
-        user_code = raspberry.user_code
+        admin_code = str(raspberry.admin_code)
+        user_code = str(raspberry.user_code)
 
 
 def get_char():
@@ -127,6 +127,8 @@ def check_input():
         user_login = True
     else:
         print('wring pass')
+        print('admin: ' + admin_code)
+        print('user: ' + user_code)
         password_retry += 1
         if password_retry == 3:
             password_retry = 0
