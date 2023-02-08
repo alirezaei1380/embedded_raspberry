@@ -12,7 +12,9 @@ GPIO.setup(GAS_PORT, GPIO.IN)
 def run_gas():
     while True:
         gas_sensor_state = GPIO.input(GAS_PORT)
+        print(gas_sensor_state)
         if gas_sensor_state != 0:
+            print('gas')
             SmokeRecord.objects.create()
             send_gas()
         time.sleep(0.5)
