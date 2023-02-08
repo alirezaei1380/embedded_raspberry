@@ -30,7 +30,7 @@ password_time = 0
 user_login = False
 admin_login = False
 
-security_mode = False
+security_mode = True
 lock_mode = False
 password_retry = 0
 
