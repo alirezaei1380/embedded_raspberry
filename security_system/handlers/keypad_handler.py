@@ -168,6 +168,7 @@ def process_char(char):
         input = ''
     elif char == 'D':
         check_input()
+        input = ''
     elif char == 'A':
         turn_on()
     elif char == 'B':
