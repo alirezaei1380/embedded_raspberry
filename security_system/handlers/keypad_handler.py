@@ -190,7 +190,7 @@ def process_char(char):
         turn_off()
     elif char not in ['*', '#']:
         input += char
-    print(f'{input= }')
+    print('input= ' + input)
 
 
 def get_security_mode():
