@@ -11,7 +11,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(17, GPIO.OUT)
 
 
-def beep(repeat=3):
+def beep(repeat=20):
    for i in range(0, repeat):
       for pulse in range(60):
          GPIO.output(17, True)
