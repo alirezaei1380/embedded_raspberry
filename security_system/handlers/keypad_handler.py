@@ -88,7 +88,7 @@ def set_passwords():
     if not code_check_time:
         code_check_time = datetime.now().timestamp()
     now_time = datetime.now().timestamp()
-    if now_time - code_check_time > 60:
+    if now_time - code_check_time > 60 or not admin_code:
         code_check_time = now_time
         raspberry = Raspberry.objects.last()
         admin_code = str(raspberry.admin_code)
